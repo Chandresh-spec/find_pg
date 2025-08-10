@@ -1,0 +1,56 @@
+{% extends "pg_list_layout.html" %}
+{% block content %}
+
+{% load static %}
+
+<div class="pg-container">
+    {% for pg in pg_items %}
+    <div class="pg-card">
+        <!-- Image -->
+        <div class="pg-image">
+            {% if pg.imgs.all %}
+                <img src="{{ pg.imgs.first.imgs.url }}" alt="{{ pg.pg_name }}">
+            {% else %}
+                <img src="{% static 'images/no-image.jpg' %}" alt="No Image">
+            {% endif %}
+            <span class="badge">{{ pg.about.gender|default:"PG" }}</span>
+        </div>
+
+        <!-- Details -->
+        <div class="pg-details">
+            <div class="pg-price">
+                ₹{{ pg.about.price|default:"—" }} 
+                <span class="sharing">Single Sharing</span>
+            </div>
+            <h3 class="pg-title">{{ pg.pg_name }}</h3>
+            <p class="pg-location">{{ pg.address }}</p>
+
+            <div class="pg-room-types">
+                <div>Single Room <span>₹{{ pg.about.price|default:"—" }}</span></div>
+                <div>Twin Sharing <span>₹{{ pg.about.twin_price|default:"—" }}</span></div>
+                <div>Triple Sharing <span>₹{{ pg.about.triple_price|default:"—" }}</span></div>
+            </div>
+
+            <div class="pg-features">
+                ✅ Fully furnished
+                <span class="icons">📶 ❄️ 🍽️</span>
+            </div>
+
+            <p class="pg-desc">
+                {{ pg.about.description|truncatechars:90 }}
+            </p>
+
+            <div class="pg-actions">
+                <button class="btn-phone">View Phone No.</button>
+                <button class="btn-owner">Contact Owner</button>
+                <a href="#" class="view-map">View on map</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>No PGs available.</p>
+    {% endfor %}
+</div>
+
+
+{% endblock  %}

@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PG Finder</title>
+<link rel="stylesheet" href="{% static 'pg_list.css' %}">
+</head>
+<body>
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo">
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home Icon">
+        PG Finder
+    </div>
+    <div class="menu">
+        <a href="#">Home</a>
+        <a href="#">Premium</a>
+        <a href="#">Nearby</a>
+        <a href="#">Contact</a>
+        <a href="#">Support</a>
+    </div>
+    <div style="display: flex; align-items: center;">
+        <div class="search-container">
+            <input type="text" placeholder="Search PGs...">
+            <button>🔍 Search</button>
+        </div>
+        <button class="login-btn">Login</button>
+    </div>
+</div>
+{% block content %}
+
+{% endblock content %}
+</body>
+</html>

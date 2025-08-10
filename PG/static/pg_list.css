@@ -1,0 +1,260 @@
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+    /* Navbar container */
+    .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: linear-gradient(to right, #4B0082, #9b0056);
+        padding: 10px 30px;
+        color: white;
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+        animation: slideDown 0.6s ease-out;
+    }
+
+    /* Logo */
+    .logo {
+        display: flex;
+        align-items: center;
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+    .logo img {
+        height: 30px;
+        margin-right: 8px;
+        animation: popIn 0.6s ease-in-out;
+    }
+
+    /* Menu */
+    .menu {
+        display: flex;
+        gap: 20px;
+    }
+    .menu a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        position: relative;
+    }
+    .menu a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 0;
+        height: 2px;
+        background: yellow;
+        transition: width 0.3s ease;
+    }
+    .menu a:hover::after {
+        width: 100%;
+    }
+
+    /* Search box */
+    .search-container {
+        display: flex;
+        align-items: center;
+        background: white;
+        border-radius: 20px;
+        padding: 3px 8px;
+    }
+    .search-container input {
+        border: none;
+        outline: none;
+        padding: 5px;
+        border-radius: 20px;
+    }
+    .search-container button {
+        background: yellow;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 15px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.3s ease;
+    }
+    .search-container button:hover {
+        background: gold;
+    }
+
+    /* Login button */
+    .login-btn {
+        background: yellow;
+        color: black;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        margin-left: 15px;
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .login-btn:hover {
+        transform: scale(1.05);
+        background: gold;
+    }
+
+    /* Animations */
+    @keyframes slideDown {
+        from { transform: translateY(-100%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes popIn {
+        from { transform: scale(0.5); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+
+
+
+
+
+
+    /* pg_list.css */
+
+.pg-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Card container */
+.pg-card {
+    display: flex;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Image section */
+.pg-image {
+    position: relative;
+    flex: 0 0 250px;
+}
+
+.pg-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pg-image .badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #3f51b5;
+    color: white;
+    font-size: 14px;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+/* Details section */
+.pg-details {
+    flex: 1;
+    padding: 15px 20px;
+}
+
+/* Price and sharing */
+.pg-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #8a2be2;
+}
+
+.pg-price .sharing {
+    font-weight: normal;
+    font-size: 14px;
+    color: gray;
+    margin-left: 10px;
+}
+
+/* PG title */
+.pg-title {
+    margin: 5px 0;
+    font-size: 18px;
+    text-transform: lowercase;
+}
+
+/* Location */
+.pg-location {
+    font-size: 14px;
+    color: gray;
+    margin-bottom: 10px;
+}
+
+/* Room types */
+.pg-room-types {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.pg-room-types div {
+    border: 1px solid #ddd;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.pg-room-types span {
+    color: #8a2be2;
+    font-weight: bold;
+}
+
+/* Features */
+.pg-features {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.pg-features .icons {
+    font-size: 16px;
+}
+
+/* Description */
+.pg-desc {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 12px;
+}
+
+/* Buttons */
+.pg-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.pg-actions .btn-phone {
+    background: #ffd700;
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.pg-actions .btn-owner {
+    background: #8a2be2;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.pg-actions .view-map {
+    font-size: 14px;
+    color: #8a2be2;
+    text-decoration: none;
+}
