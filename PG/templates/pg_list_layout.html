@@ -5,10 +5,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PG Finder</title>
-<link rel="stylesheet" href="{% static 'pg_list.css' %}">
+<link rel="stylesheet" href={% static 'pg_list.css' %}>
 </head>
 <body>
-<!-- Navbar -->
+
+<!-- NAVBAR 1 -->
 <div class="navbar">
     <div class="logo">
         <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home Icon">
@@ -21,16 +22,69 @@
         <a href="#">Contact</a>
         <a href="#">Support</a>
     </div>
-    <div style="display: flex; align-items: center;">
+    <div class="right">
         <div class="search-container">
             <input type="text" placeholder="Search PGs...">
-            <button>🔍 Search</button>
+            <button>🔍</button>
         </div>
         <button class="login-btn">Login</button>
     </div>
 </div>
-{% block content %}
 
-{% endblock content %}
+<!-- NAVBAR 2 (FILTERS) -->
+<div class="filter-bar">
+    <div class="filter-item">
+        <button class="filter-btn" onclick="toggleDropdown('pg-type')">PG Type ▼</button>
+        <div id="pg-type" class="dropdown">
+            <button>PG</button>
+            <button>Hostel</button>
+            <button>Flat</button>
+        </div>
+    </div>
+
+    <div class="filter-item">
+        <button class="filter-btn" onclick="toggleDropdown('boys-girls')">Boys/Girls ▼</button>
+        <div id="boys-girls" class="dropdown">
+            <button>Boys</button>
+            <button>Girls</button>
+            <button>Both</button>
+        </div>
+    </div>
+
+    <div class="filter-item">
+        <button class="filter-btn" onclick="toggleDropdown('budget')">Budget ▼</button>
+        <div id="budget" class="dropdown">
+            <button>₹ 4000</button>
+            <button>₹ 6000</button>
+            <button>₹ 8000</button>
+            <button>₹ 10000</button>
+        </div>
+    </div>
+
+    <div class="filter-item">
+        <button class="filter-btn" onclick="toggleDropdown('amenities')">Amenities ▼</button>
+        <div id="amenities" class="dropdown">
+            <label><input type="checkbox"> AC</label>
+            <label><input type="checkbox"> Wifi</label>
+            <label><input type="checkbox"> Laundry</label>
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleDropdown(id) {
+    document.querySelectorAll(".dropdown").forEach(d => {
+        if (d.id !== id) d.classList.remove("active");
+    });
+    document.getElementById(id).classList.toggle("active");
+}
+
+document.addEventListener("click", function(e) {
+    if (!e.target.closest(".filter-item")) {
+        document.querySelectorAll(".dropdown").forEach(d => d.classList.remove("active"));
+    }
+});
+</script>
+
 </body>
 </html>

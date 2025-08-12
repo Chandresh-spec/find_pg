@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils import timezone
 # Create your models here.
 class PG_Owner(models.Model):
    
@@ -90,7 +90,6 @@ class DeatilPage(models.Model):
 
 class PGRules(models.Model):
    pg=models.OneToOneField(PG,on_delete=models.CASCADE,related_name='rules')
-   gate_closing=models.DateTimeField(default=10)
    visitor_entry=models.BooleanField(default=True)
    smoking=models.BooleanField(default=False)
    drinking=models.BooleanField(default=False)
