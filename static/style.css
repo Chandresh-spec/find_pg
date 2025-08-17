@@ -1,152 +1,114 @@
-/* Reset */
+/* General Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-/* Navbar */
-.navbar {
-  background: linear-gradient(90deg, #1d2671, #c33764);
-  padding: 12px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: white;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-.nav-center {
-  flex: 1;
+/* Body Styling */
+body {
+  background: linear-gradient(135deg, #1a237e, #4a148c);
   display: flex;
   justify-content: center;
-}
-
-.nav-links {
-  display: flex;
-  gap: 25px;
-}
-
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  position: relative;
-  padding: 5px 0;
-  transition: color 0.3s ease;
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -3px;
-  width: 0;
-  height: 2px;
-  background: gold;
-  transition: width 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: gold;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-.nav-right {
-  display: flex;
   align-items: center;
-  gap: 20px;
+  min-height: 100vh;
 }
 
-/* Auth Buttons */
-.btn-auth-navbar {
-  text-decoration: none;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-
-.login-btn {
-  background: gold;
-  color: #333;
-}
-
-.login-btn:hover {
-  background: #ffcc00;
-}
-
-.logout-btn {
-  background: crimson;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.logout-btn:hover {
-  background: #ff4d4d;
-}
-
-/* Hero Section */
-.hero-section {
-  background: linear-gradient(135deg, #f8f9fc, #fff);
+/* Form Container */
+.form-container {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+  width: 400px;
   text-align: center;
-  padding: 80px 20px;
+  animation: fadeIn 0.8s ease-in-out;
 }
 
-.hero-content h1 {
-  font-size: 2.5rem;
-  color: #1d2671;
-  margin-bottom: 15px;
-}
-
-.hero-content p {
-  font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 30px;
-}
-
-/* CTA Buttons */
-.hero-buttons {
+/* Logo + Title */
+.logo {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.cta-btn {
-  display: inline-block;
-  padding: 12px 24px;
-  border-radius: 30px;
-  font-size: 1rem;
-  font-weight: bold;
-  text-decoration: none;
-  transition: all 0.3s ease;
+.logo img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
 }
 
-.primary-btn {
-  background: linear-gradient(90deg, #1d2671, #c33764);
-  color: white;
+.logo h1 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #2c3e50;
 }
 
-.primary-btn:hover {
-  background: linear-gradient(90deg, #c33764, #1d2671);
+/* Form Title */
+.form-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #4a148c;
 }
 
-.secondary-btn {
-  background: gold;
+/* Input Fields */
+.form-group {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 500;
   color: #333;
 }
 
-.secondary-btn:hover {
-  background: #ffcc00;
+.form-input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 6px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.form-input:focus {
+  border-color: #4a148c;
+  box-shadow: 0 0 6px rgba(74, 20, 140, 0.3);
+}
+
+/* Error Message */
+.error {
+  font-size: 13px;
+  color: red;
+  margin-top: 4px;
+}
+
+/* Button */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #4a148c, #1a237e);
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  opacity: 0.9;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }

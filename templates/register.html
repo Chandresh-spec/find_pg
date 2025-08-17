@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'register.css' %}">
+</head>
+<body>
+    <body>
+  <div class="form-container">
+
+    <!-- Logo -->
+    <div class="logo">
+      <img src="{% static 'logo.png' %}" alt="PG Finder Logo"> 
+      <h1>PG Finder</h1>
+    </div>
+
+    <h2 class="form-title">Create Account</h2>
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <!-- Username -->
+      <div class="form-group">
+        <label for="id_username">Username</label>
+        <input type="text" name="username" id="id_username" class="form-input" value="{{ form.username.value|default_if_none:'' }}">
+        {% if form.username.errors %}
+          <p class="error">{{ form.username.errors.0 }}</p>
+        {% endif %}
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="id_email">Email</label>
+        <input type="email" name="email" id="id_email" class="form-input" value="{{ form.email.value|default_if_none:'' }}">
+        {% if form.email.errors %}
+          <p class="error">{{ form.email.errors.0 }}</p>
+        {% endif %}
+      </div>
+
+      <!-- Phone -->
+      <div class="form-group">
+        <label for="id_phone_number">Phone Number</label>
+        <input type="text" name="phone_number" id="id_phone_number" class="form-input" value="{{ form.phone_number.value|default_if_none:'' }}">
+        {% if form.phone_number.errors %}
+          <p class="error">{{ form.phone_number.errors.0 }}</p>
+        {% endif %}
+      </div>
+
+      <!-- Profile Pic -->
+      <div class="form-group">
+        <label for="id_profile_pic">Profile Picture</label>
+        <input type="file" name="profile_pic" id="id_profile_pic" class="form-input">
+        {% if form.profile_pic.errors %}
+          <p class="error">{{ form.profile_pic.errors.0 }}</p>
+        {% endif %}
+      </div>
+
+      <!-- Bio -->
+      <div class="form-group">
+        <label for="id_bio">Bio</label>
+        <textarea name="bio" id="id_bio" class="form-input">{{ form.bio.value|default_if_none:'' }}</textarea>
+        {% if form.bio.errors %}
+          <p class="error">{{ form.bio.errors.0 }}</p>
+        {% endif %}
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="id_password1">Password</label>
+        <input type="password" name="password1" id="id_password1" class="form-input">
+        {% if form.password1.errors %}
+          <p class="error">{{ form.password1.errors.0 }}</p>
+        {% endif %}
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="form-group">
+        <label for="id_password2">Confirm Password</label>
+        <input type="password" name="password2" id="id_password2" class="form-input">
+        {% if form.password2.errors %}
+          <p class="error">{{ form.password2.errors.0 }}</p>
+        {% endif %}
+      </div>
+
+      <button type="submit" class="submit-btn">Register</button>
+    </form>
+  </div>
+</body>
+
+</body>
+</html>

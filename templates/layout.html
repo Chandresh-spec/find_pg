@@ -24,12 +24,25 @@
 
   <div class="nav-right">
     <div class="auth-buttons">
-      <a href="#" class="btn-auth-navbar login-btn">Login</a>
+      {% if request.user.is_authenticated %}
+      <a href="{% url 'logout' %}" class="btn-auth-navbar login-btn">Logout</a>
+      {% else %}
+      <a href="{% url 'login' %}" class="btn-auth-navbar login-btn">Login</a>
+      {% endif %}
+    </div>
+
+    <!-- ✅ Profile Section -->
+    <div class="profile-dropdown">
+      <img src="{% static 'default.png' %}" alt="Profile" class="profile-img">
+      <div class="dropdown-menu">
+        <a href="#">My Profile</a>
+        <a href="#">Edit</a>
+      </div>
     </div>
   </div>
 </nav>
 
-<!-- Hero Section with CTA Buttons -->
+<!-- Hero Section -->
 <section class="hero-section">
   <div class="hero-content">
     <h1>Find Your Perfect PG with Ease</h1>
