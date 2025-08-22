@@ -2,93 +2,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'register.css' %}">
+<meta charset="UTF-8">
+<title>PG Finder Signup</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="{% static 'register.css' %}">
 </head>
 <body>
-    <body>
-  <div class="form-container">
 
-    <!-- Logo -->
-    <div class="logo">
-      <img src="{% static 'logo.png' %}" alt="PG Finder Logo"> 
-      <h1>PG Finder</h1>
+<div id="chat-form">
+
+    <div id="logo">🏠 PG Finder</div>
+
+    <!-- Step 1 -->
+    <div id="msg1" class="message active">
+        <label>What's your name?</label><br>
+        <input type="text" id="input1" placeholder="Enter your name">
+        <br><button id="next1">Next</button>
     </div>
 
-    <h2 class="form-title">Create Account</h2>
+    <!-- Step 2 -->
+    <div id="msg2" class="message">
+        <label>Enter your email:</label><br>
+        <input type="email" id="input2" placeholder="Enter your email">
+        <br><button id="next2">Next</button>
+    </div>
 
-    <form method="post" enctype="multipart/form-data">
-      {% csrf_token %}
+    <!-- Step 3 -->
+    <div id="msg3" class="message">
+        <label>Phone number:</label><br>
+        <input type="text" id="input3" placeholder="Enter your phone">
+        <br><button id="next3">Next</button>
+    </div>
 
-      <!-- Username -->
-      <div class="form-group">
-        <label for="id_username">Username</label>
-        <input type="text" name="username" id="id_username" class="form-input" value="{{ form.username.value|default_if_none:'' }}">
-        {% if form.username.errors %}
-          <p class="error">{{ form.username.errors.0 }}</p>
-        {% endif %}
-      </div>
+    <!-- Step 4 -->
+    <div id="msg4" class="message">
+        <label>Create a password:</label><br>
+        <input type="password" id="input4" placeholder="Enter your password">
+        <br><button id="next4">Next</button>
+    </div>
 
-      <!-- Email -->
-      <div class="form-group">
-        <label for="id_email">Email</label>
-        <input type="email" name="email" id="id_email" class="form-input" value="{{ form.email.value|default_if_none:'' }}">
-        {% if form.email.errors %}
-          <p class="error">{{ form.email.errors.0 }}</p>
-        {% endif %}
-      </div>
+    <!-- Step 5 -->
+    <div id="msg5" class="message">
+        <label>Profile picture:</label><br>
+        <input type="file" id="input5" accept="image/*">
+        <br><button id="next5">Next</button>
+    </div>
 
-      <!-- Phone -->
-      <div class="form-group">
-        <label for="id_phone_number">Phone Number</label>
-        <input type="text" name="phone_number" id="id_phone_number" class="form-input" value="{{ form.phone_number.value|default_if_none:'' }}">
-        {% if form.phone_number.errors %}
-          <p class="error">{{ form.phone_number.errors.0 }}</p>
-        {% endif %}
-      </div>
+    <!-- Step 6 -->
+    <div id="msg6" class="message">
+        <label>Write a short bio:</label><br>
+        <textarea id="input6" placeholder="Tell us about yourself" rows="3"></textarea>
+        <br><button id="submit">Submit</button>
+    </div>
 
-      <!-- Profile Pic -->
-      <div class="form-group">
-        <label for="id_profile_pic">Profile Picture</label>
-        <input type="file" name="profile_pic" id="id_profile_pic" class="form-input">
-        {% if form.profile_pic.errors %}
-          <p class="error">{{ form.profile_pic.errors.0 }}</p>
-        {% endif %}
-      </div>
+    <!-- Progress dots -->
+    <div id="progress">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
 
-      <!-- Bio -->
-      <div class="form-group">
-        <label for="id_bio">Bio</label>
-        <textarea name="bio" id="id_bio" class="form-input">{{ form.bio.value|default_if_none:'' }}</textarea>
-        {% if form.bio.errors %}
-          <p class="error">{{ form.bio.errors.0 }}</p>
-        {% endif %}
-      </div>
+</div>
 
-      <!-- Password -->
-      <div class="form-group">
-        <label for="id_password1">Password</label>
-        <input type="password" name="password1" id="id_password1" class="form-input">
-        {% if form.password1.errors %}
-          <p class="error">{{ form.password1.errors.0 }}</p>
-        {% endif %}
-      </div>
+<script>
+function sendStep(stepNum, data, nextId, stepIndex) {
+    $.ajax({
+        url: "{% url 'step_form' %}",
+        type: 'POST',
+        data: data,
+        processData: false,
+        contentType: false,
+        success: function(response){
+            if(response.success){
+                $('#msg'+stepNum).removeClass('active');
+                if(nextId) {
+                    $(nextId).addClass('active');
+                    $(nextId + ' input, '+nextId+' textarea').focus();
+                    $('#progress .dot').removeClass('active');
+                    $('#progress .dot').eq(stepIndex).addClass('active');
+                } else {
+                    alert("All steps completed!");
+                    // Optionally redirect or reset form here
+                }
+            } else {
+                alert(JSON.stringify(response.errors));
+            }
+        }
+    });
+}
 
-      <!-- Confirm Password -->
-      <div class="form-group">
-        <label for="id_password2">Confirm Password</label>
-        <input type="password" name="password2" id="id_password2" class="form-input">
-        {% if form.password2.errors %}
-          <p class="error">{{ form.password2.errors.0 }}</p>
-        {% endif %}
-      </div>
+// Step 1
+$('#next1').click(function(){
+    let fd = new FormData();
+    fd.append('name', $('#input1').val());
+    fd.append('step', '1');
+    fd.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+    sendStep(1, fd, '#msg2', 1);
+});
 
-      <button type="submit" class="submit-btn">Register</button>
-    </form>
-  </div>
-</body>
+// Step 2
+$('#next2').click(function(){
+    let fd = new FormData();
+    fd.append('email', $('#input2').val());
+    fd.append('step', '2');
+    fd.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+    sendStep(2, fd, '#msg3', 2);
+});
+
+// Step 3
+$('#next3').click(function(){
+    let fd = new FormData();
+    fd.append('phone', $('#input3').val());
+    fd.append('step', '3');
+    fd.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+    sendStep(3, fd, '#msg4', 3);
+});
+
+// Step 4
+$('#next4').click(function(){
+    let fd = new FormData();
+    fd.append('password', $('#input4').val());
+    fd.append('step', '4');
+    fd.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+    sendStep(4, fd, '#msg5', 4);
+});
+
+// Step 5
+$('#next5').click(function(){
+    let fd = new FormData();
+    fd.append('profile_picture', $('#input5')[0].files[0]);
+    fd.append('step', '5');
+    fd.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+    sendStep(5, fd, '#msg6', 5);
+});
+
+// Step 6
+$('#submit').click(function(){
+    let fd = new FormData();
+    fd.append('bio', $('#input6').val());
+    fd.append('step', '6');
+    fd.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+    sendStep(6, fd, null, 5);
+});
+</script>
 
 </body>
 </html>
