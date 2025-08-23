@@ -1,0 +1,95 @@
+/* General page styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #6dd5fa, #2980b9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Center wrapper */
+.login-container {
+    text-align: center;
+    color: white;
+}
+
+/* Logo + name */
+.logo {
+    margin-bottom: 20px;
+}
+.logo .icon {
+    font-size: 50px;
+}
+.logo h1 {
+    margin: 5px 0;
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+.logo .tagline {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Login card */
+.login-box {
+    background: #fff;
+    color: #333;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    width: 320px;
+    margin: 0 auto;
+}
+.login-box h2 {
+    margin-bottom: 15px;
+    color: #2980b9;
+}
+
+/* Form styling */
+.login-box form p {
+    margin-bottom: 15px;
+    text-align: left;
+}
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+}
+.login-box input:focus {
+    border-color: #2980b9;
+    box-shadow: 0 0 5px rgba(41, 128, 185, 0.5);
+}
+
+/* Button */
+.btn {
+    background: #2980b9;
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn:hover {
+    background: #21618c;
+}
+
+/* Extras */
+.extras {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+.extras a {
+    color: #2980b9;
+    text-decoration: none;
+}
+.extras a:hover {
+    text-decoration: underline;
+}

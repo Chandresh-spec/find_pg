@@ -2,7 +2,7 @@ from django  import  forms
 
 
 class NameForm(forms.Form):
-    name=forms.CharField(
+    username=forms.CharField(
         max_length=50,
         widget=forms.TextInput(attrs={'placeholder':'Enter your name'})
     )

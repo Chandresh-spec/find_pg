@@ -70,7 +70,7 @@
 <script>
 function sendStep(stepNum, data, nextId, stepIndex) {
     $.ajax({
-        url: "{% url 'step_form' %}",
+        url: "{% url 'register' %}",
         type: 'POST',
         data: data,
         processData: false,
