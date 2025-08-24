@@ -86,6 +86,7 @@ function sendStep(stepNum, data, nextId, stepIndex) {
                 } else {
                     alert("All steps completed!");
                     // Optionally redirect or reset form here
+                    redirect('login')
                 }
             } else {
                 alert(JSON.stringify(response.errors));

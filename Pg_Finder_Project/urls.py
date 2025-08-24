@@ -24,4 +24,5 @@ urlpatterns = [
     path('home/',views.Home,name='home'),
     path('pg/',include('PG.urls')),
     path('auth/',include('user_auth.urls')),
+    path('profile/',include('Profile.urls')),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

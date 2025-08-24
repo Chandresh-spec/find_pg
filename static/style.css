@@ -215,3 +215,89 @@ html, body {
         font-size: 1rem;
     }
 }
+
+
+
+/*  */
+/* profileccs */
+
+    /* body { */
+        /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+        /* background: #f5f7fa; */
+        /* display: flex; */
+        /* justify-content: center; */
+        /* align-items: center; */
+        /* padding: 50px; */
+    /* } */
+
+    .profile-card {
+        background: white;
+        max-width: 500px;
+        width: 100%;
+        border-radius: 20px;
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+
+    .profile-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .profile-header {
+        text-align: center;
+        padding: 30px 20px;
+        background: linear-gradient(135deg, #4facfe, #00f2fe);
+        color: white;
+    }
+
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid white;
+        margin-bottom: 15px;
+    }
+
+    .username {
+        font-size: 28px;
+        margin: 0;
+    }
+
+    .profile-body {
+        padding: 25px;
+        text-align: center;
+    }
+
+    .profile-body h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .profile-body p {
+        font-size: 16px;
+        color: #555;
+        line-height: 1.6;
+    }
+
+
+    .edit-btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 0.7rem 1.5rem;
+        background: linear-gradient(135deg, #4facfe, #00f2fe);
+        color: white;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: background 0.3s, transform 0.2s;
+    }
+
+    .edit-btn:hover {
+        background: linear-gradient(135deg, #3a8bd9, #00c6fb);
+        transform: scale(1.05);
+    }
+
+

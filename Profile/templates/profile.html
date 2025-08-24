@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div style="display:flex; justify-content:center; align-items:center; padding:40px;">
+    <div class="profile-card">
+        <div class="profile-header">
+            {% if profile.profile_pic %}
+                <img src="{{ profile.profile_pic.url }}" alt="Profile Picture" class="profile-pic">
+            {% comment %} {% else %} {% endcomment %}
+                {% comment %} <img src="https://via.placeholder.com/150" alt="Default Profile" class="profile-pic"> {% endcomment %}
+            {% endif %}
+            <h1 class="username">{{ profile.user.username }}</h1>
+        </div>
+
+        <div class="profile-body">
+            <h3>About Me</h3>
+            <p>{{ profile.bio|default:"This user hasn’t added a bio yet." }}</p>
+
+
+             <a href="{% url 'edit_profile' %}" class="edit-btn">Edit Profile</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

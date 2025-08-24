@@ -35,13 +35,13 @@
     <div class="profile-dropdown">
       <img src="{% static 'default.png' %}" alt="Profile" class="profile-img">
       <div class="dropdown-menu">
-        <a href="#">My Profile</a>
+        <a href="{% url 'profile' %}">My Profile</a>
         <a href="#">Edit</a>
       </div>
     </div>
   </div>
 </nav>
-
+{% block content %}
 <!-- Hero Section -->
 <section class="hero-section">
   <div class="hero-content">
@@ -53,6 +53,6 @@
     </div>
   </div>
 </section>
-
+{% endblock content %}
 </body>
 </html>
